@@ -19,12 +19,14 @@ struct CountryDetailView: View {
 
 private struct CountryInfo: View {
     let country: Country
+    @StateObject private var viewModel = CountryDetailViewModel()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             // Country Information
             InfoRow(title: "Capital", value: country.capital ?? "N/A")
             InfoRow(title: "Region", value: country.region)
-            InfoRow(title: "Population", value: formatPopulation(country.population))
+            InfoRow(title: "Population", value: viewModel.formatPopulation(country.population))
             
             // Currencies
             if let currencies = country.currencies {
@@ -44,12 +46,6 @@ private struct CountryInfo: View {
                 }
             }
         }
-    }
-    
-    func formatPopulation(_ population: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: population)) ?? String(population)
     }
 }
 
