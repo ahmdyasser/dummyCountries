@@ -193,14 +193,8 @@ struct CountryRow: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            AsyncImage(url: URL(string: country.flags.png)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 60, height: 40)
+            CachedAsyncImage(url: country.flags.png)
+                .frame(width: 60, height: 40)
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(country.name)

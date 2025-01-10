@@ -14,9 +14,10 @@ final class HomeViewModel: ObservableObject {
     
     var filteredCountries: [Country] {
         if searchText.isEmpty {
-            return countries
+            return countries.filter { $0.name != "Israel" }
         }
         return countries.filter { country in
+            country.name != "Israel" &&
             country.name.localizedCaseInsensitiveContains(searchText)
         }
     }
