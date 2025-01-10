@@ -9,8 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
-    @State private var removedCountries: Set<String> = []
-    @State private var favoriteCountries: Set<String> = []
     
     var body: some View {
         NavigationView {
@@ -22,8 +20,8 @@ struct HomeView: View {
                 } else {
                     CountryListView(
                         viewModel: viewModel,
-                        removedCountries: $removedCountries,
-                        favoriteCountries: $favoriteCountries
+                        removedCountries: $viewModel.removedCountries,
+                        favoriteCountries: $viewModel.favoriteCountries
                     )
                 }
             }
