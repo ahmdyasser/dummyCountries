@@ -28,6 +28,13 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Countries")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: LanguageSelectionView()) {
+                        Image(systemName: "gear")
+                    }
+                }
+            }
         }
     }
 }

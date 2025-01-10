@@ -29,9 +29,22 @@
 		966BF16A2D2FF0B600AD0C83 /* dummyCountriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dummyCountriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		96BE28472D30BEF5008C37AA /* Exceptions for "dummyCountries" folder in "dummyCountries" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 966BF14F2D2FF0B300AD0C83 /* dummyCountries */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		966BF1522D2FF0B300AD0C83 /* dummyCountries */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				96BE28472D30BEF5008C37AA /* Exceptions for "dummyCountries" folder in "dummyCountries" target */,
+			);
 			path = dummyCountries;
 			sourceTree = "<group>";
 		};
@@ -183,6 +196,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 966BF1472D2FF0B300AD0C83;
 			minimizedProjectReferenceProxies = 1;
@@ -390,6 +404,7 @@
 				DEVELOPMENT_TEAM = 6G5MP9XUH9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dummyCountries/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show you information about your current country.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -420,6 +435,7 @@
 				DEVELOPMENT_TEAM = 6G5MP9XUH9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dummyCountries/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show you information about your current country.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
