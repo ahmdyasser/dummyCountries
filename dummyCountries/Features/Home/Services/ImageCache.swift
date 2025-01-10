@@ -40,6 +40,7 @@ struct CachedAsyncImage: View {
         // Check cache first
         if let cachedImage = ImageCache.shared.get(for: url) {
             image = cachedImage
+            AppLogger.debug("Cache hit for URL: \(url)", category: .cache)
             return
         }
         
