@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  dummyCountries
 //
 //  Created by Ahmad Yasser on 09/01/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @State private var removedCountries: Set<String> = []
     @State private var favoriteCountries: Set<String> = []
@@ -212,5 +212,5 @@ struct CountryRow: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }
