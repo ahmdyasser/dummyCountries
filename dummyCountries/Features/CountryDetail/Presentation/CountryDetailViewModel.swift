@@ -1,6 +1,6 @@
 import Foundation
 
-class CountryDetailViewModel: ObservableObject {
+final class CountryDetailViewModel: ObservableObject {
     func formatPopulation(_ population: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
