@@ -1,12 +1,17 @@
 import SwiftUI
 
+enum ScreenState {
+    case `default`
+    case loading
+    case error(_ message: String)
+}
+
 final class HomeViewModel: ObservableObject {
     private let useCase: CountryFetchingUseCase
     private let locationManager: LocationManager
     
     
-    @Published var isLoading: Bool = false
-    @Published var errorMessage: String?
+    @Published var screenState: ScreenState = .default
     @Published var searchText: String = ""
     @Published var userCountry: Country?
     @Published var countries: [Country] = []
@@ -49,25 +54,24 @@ final class HomeViewModel: ObservableObject {
     
     @MainActor
     func loadCountries() async {
-        isLoading = true
-        errorMessage = nil
+        screenState = .loading
         
         do {
             countries = try await useCase.fetchAllCountries()
         } catch let error as CountryFetchingError {
             switch error {
             case .invalidURL:
-                errorMessage = "Invalid URL. Please try again later."
+                screenState = .error("Invalid URL. Please try again later.")
             case .networkError:
-                errorMessage = "Network error. Please check your connection."
+                screenState = .error("Network error. Please check your connection.")
             case .decodingError:
-                errorMessage = "Error processing data. Please try again later."
+                screenState = .error("Error processing data. Please try again later.")
             }
         } catch {
-            errorMessage = "Unexpected error: \(error.localizedDescription)"
+            screenState = .error("Unexpected error: \(error.localizedDescription)")
         }
         
-        isLoading = false
+        screenState = .default
     }
     
     func refreshCountries() {

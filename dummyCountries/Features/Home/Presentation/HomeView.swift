@@ -13,16 +13,17 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             Group {
-                if viewModel.isLoading {
-                    LoadingView()
-                } else if let error = viewModel.errorMessage {
-                    ErrorView(error: error, onRetry: viewModel.refreshCountries)
-                } else {
+                switch viewModel.screenState {
+                case .default:
                     CountryListView(
                         viewModel: viewModel,
                         removedCountries: $viewModel.removedCountries,
                         favoriteCountries: $viewModel.favoriteCountries
                     )
+                case .loading:
+                    LoadingView()
+                case .error(let message):
+                    ErrorView(error: message, onRetry: viewModel.refreshCountries)
                 }
             }
             .navigationTitle("Countries")
@@ -87,9 +88,7 @@ private struct CountryListView: View {
             )
         }
         .searchable(text: $viewModel.searchText, prompt: "Search countries")
-        .refreshable {
-            await viewModel.loadCountries()
-        }
+        .refreshable { await viewModel.loadCountries() }
     }
 }
 
